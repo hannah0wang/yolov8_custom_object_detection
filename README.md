@@ -1,8 +1,13 @@
+# Custom Overpass Detection on Roads and Highways Using YOLOv8
+
+## Abstract
+This study focuses on YOLOv8, a state-of-the-art object detection model, and aims to optimize its overpass detection capabilities. Through the analysis of different performance metrics and dataset improvements via augmentations, the study aims to improve detection precision on a custom dataset of overpasses. Upon demonstrating relative accuracy, the model underwent testing on dashcam footage synchronized with data such as GPS coordinates, time, and date. This comprehensive study not only showcases the model's capabilities in real-world scenarios but also highlights the potential for extrapolating critical ground truth from overpass detections, particularly the exact vehicle location and timing while passing overpasses.
+
 ***Keywords---*** Overpass Detection, YOLOv8, Performance Metrics
 
-# Introduction
+# 1 Introduction
 
-## Motivation
+## 1.1 Motivation
 
 Advancements in computer vision methodologies have significantly
 enhanced the accuracy and efficiency of object identification. [(Chai,
@@ -18,7 +23,7 @@ Pinpointing the exact location and time when a vehicle traverses under
 an overpass assists in precise geographical mapping and creates an
 accurate records of a vehicle's journey.
 
-##  YOLOv8
+##  1.2 YOLOv8
 
 YOLOv8 is the latest evolution of the You Only Look Once (YOLO) model,
 released in 2023. It was developed by Ultralytics and represents a
@@ -41,7 +46,7 @@ Smaller models are lighter weight but sacrifice some accuracy for faster
 inference speed. YOLOv8m was used in this study as it balances the
 trade-off between accuracy and inference speed.
 
-## Object Detection Metrics and Bounding Boxes
+## 1.3 Object Detection Metrics and Bounding Boxes
 
 Average Precision (AP) is a widely used evaluation metric in the field
 of object detection, particularly in assessing the performance of models
@@ -58,13 +63,15 @@ $$IoU =
 \frac{X \cap Y}{X \cup Y}$$ Where X represents the ground truth and Y
 represents the predicted bounding box.
 
+![image](https://github.com/hannah0wang/yolov8_custom_object_detection/assets/43276816/3aa9b26e-f8bb-4597-a8fc-e59c334c86bb)
+
 ![Intersection over Union. a) The IoU is calculated by dividing the
 intersection of the two boxes by the union of their boxes; b) examples
 of three different IoU values for different box locations. Figure
 sourced from Terven, Juan R., and Diana M.
-Cordova-Esparaza.](new-iou.png){#fig:iou width="8cm"}
+Cordova-Esparaza.]
 
-## Confidence Score as a Performance Indicator
+## 1.4 Confidence Score as a Performance Indicator
 
 The confidence score of a bounding box is a formal measure calculated by
 comparing the predicted bounding box with the corresponding ground truth
@@ -81,11 +88,12 @@ Given the fixed nature of overpasses, their precise GPS coordinates
 allow verification, enabling the dismissal of false positives if their
 predicted locations do not align with any known overpass locations.
 
-![Example bounding box with confidence score
-[Detect-Ultralytics](Detect - Ultralytics YOLOv8 Docs)](person-conf.png){#fig:person
-width="3cm"}
+![image](https://github.com/hannah0wang/yolov8_custom_object_detection/assets/43276816/c8a96d32-778f-4397-8e43-41eb1b7c9968)
 
-## The Need for Training YOLOv8 Object Detection on a Custom Dataset
+![Example bounding box with confidence score
+[Detect-Ultralytics](Detect - Ultralytics YOLOv8 Docs)]
+
+## 1.5 The Need for Training YOLOv8 Object Detection on a Custom Dataset
 
 YOLOv8 uses the Microsoft COCO (Common Objects in Context) dataset as
 the standard benchmark for evaluating performance and includes 91 object
@@ -100,9 +108,9 @@ roads and highways, an object not present in the COCO dataset,
 necessitated training the YOLOv8 model with a custom dataset comprising
 overpass images.
 
-# Methodology
+# 2 Methodology
 
-## Collecting Images to Create the Overpass Dataset
+## 2.1 Collecting Images to Create the Overpass Dataset
 
 The dataset used in this custom model sourced images from 32 dashcam
 videos of individual drives synchronized with GPS, time, and date. Each
@@ -132,7 +140,7 @@ contributes significantly to enhancing the accuracy and robustness of
 the model used for overpass detection. From this process, we were able
 to produce 94 images, almost doubling our initial dataset.
 
-## Creating the Custom Dataset in Roboflow
+## 2.2 Creating the Custom Dataset in Roboflow
 
 Roboflow is an end-to-end computer vision platform tailored for the
 comprehensive management, annotation, preprocessing, and augmentation of
@@ -148,10 +156,12 @@ delineation and annotation of overpasses presented in the images
 establish comprehensive ground truth essential for subsequent model
 training and analysis.
 
-![Example labeling on an image from the
-dataset](ex-bounding-box.png){#fig:matrix width="6.5cm"}
+![image](https://github.com/hannah0wang/yolov8_custom_object_detection/assets/43276816/a22684cb-0d41-4298-b027-816ac99548b5)
 
-## Applying Augmentations to the Dataset
+![Example labeling on an image from the
+dataset](ex-bounding-box.png)
+
+## 2.3 Applying Augmentations to the Dataset
 
 Next, Roboflow's data augmentation techniques were leveraged to improve
 model generalization and robustness as well as to increase the dataset
