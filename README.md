@@ -63,10 +63,12 @@ $$IoU =
 \frac{X \cap Y}{X \cup Y}$$ Where X represents the ground truth and Y
 represents the predicted bounding box.
 
-![image](https://github.com/hannah0wang/yolov8_custom_object_detection/assets/43276816/3aa9b26e-f8bb-4597-a8fc-e59c334c86bb)
+![image](https://github.com/hannah0wang/yolov8_custom_object_detection/assets/43276816/35854cc9-2fb8-4b70-8d7d-baa742b86aa0)
 
-Figure 1. Sourced from Terven, Juan R., and Diana M.
-Cordova-Esparaza.
+Figure 1. Intersection over Union. a) The IoU is calculated by dividing 
+the intersection of the two boxes by the union of their boxes; b) examples 
+of three different IoU values for different box locations. Sourced from 
+Terven, Juan R., and Diana M. Cordova-Esparaza.
 
 ## 1.4 Confidence Score as a Performance Indicator
 
