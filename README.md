@@ -471,10 +471,7 @@ could potentially provide insights into the vehicle's orientation and
 its direction of travel.
 
 # 5 Acknowledgements
-
-We would like to thank Alex Richardson and Kate Sanborn for their prior
-efforts in aligning dashcam footage with relevant car data, establishing
-the essential foundation for our present analysis.
+---
 
 # 6 References
 
